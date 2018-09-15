@@ -35,17 +35,18 @@ namespace GCAT.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<Entities.ReportJob> reportJobEntities = await _reportJobRepository.GetReportJobsAsync();
+            var userId = _userManager.GetUserId(User);
+            IEnumerable<Entities.ReportJob> reportJobEntities = await _reportJobRepository.GetReportJobsAsync(userId);
             return Ok(reportJobEntities);
         }
 
         [HttpGet]
         [ReportJobResultFilterAttribute]
         [Route("{id}", Name = "GetReportJob")]
-        public async Task<IActionResult> GetBook(long id)
+        public async Task<IActionResult> GetReportJob(long id)
         {
             var reportJob = await _reportJobRepository.GetReportJobAsync(id);
-            if (reportJob == null)
+            if (reportJob == null || reportJob.UserId != _userManager.GetUserId(User))
             {
                 return NotFound();
             }

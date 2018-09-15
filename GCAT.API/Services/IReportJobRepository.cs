@@ -6,7 +6,7 @@ namespace GCAT.API.Services
 {
     public interface IReportJobRepository
     {
-        Task<IEnumerable<ReportJob>> GetReportJobsAsync();
+        Task<IEnumerable<ReportJob>> GetReportJobsAsync(string userId);
 
         void AddReportJob(ReportJob reportJob);
 

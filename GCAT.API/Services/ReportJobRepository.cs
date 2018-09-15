@@ -31,9 +31,9 @@ namespace GCAT.API.Services
             return await _context.ReportJobs.FirstOrDefaultAsync(b => b.ReportJobId == id);
         }
 
-        public async Task<IEnumerable<ReportJob>> GetReportJobsAsync()
+        public async Task<IEnumerable<ReportJob>> GetReportJobsAsync(string userId)
         {
-            return await _context.ReportJobs.ToListAsync();
+            return await _context.ReportJobs.Where(x => x.UserId == userId).ToListAsync();
         }
 
         public async Task<bool> SaveChangesAsync()
