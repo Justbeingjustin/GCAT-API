@@ -27,7 +27,7 @@ namespace GCAT.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public async void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -50,6 +50,7 @@ namespace GCAT.API
             var connectionString = Configuration["ConnectionStrings:DBConnectionString"];
             services.AddDbContext<CryptoContext>(o => o.UseSqlServer(connectionString));
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IReportJobRepository, ReportJobRepository>();
             services.AddIdentity<CryptoUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = false;

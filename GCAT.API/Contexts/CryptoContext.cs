@@ -16,5 +16,6 @@ namespace GCAT.API.Contexts
         }
 
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<ReportJob> ReportJobs { get; set; }
     }
 }
