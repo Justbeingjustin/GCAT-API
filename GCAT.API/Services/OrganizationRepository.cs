@@ -19,7 +19,7 @@ namespace GCAT.API.Services
 
         public async Task<IEnumerable<Organization>> GetOrganizationsAsync()
         {
-            return await _context.Organizations.ToListAsync();
+            return await _context.Organizations.OrderBy(x => x.Name).ToListAsync();
         }
 
         public async Task<bool> SaveChangesAsync()
