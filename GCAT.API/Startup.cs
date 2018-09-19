@@ -51,6 +51,7 @@ namespace GCAT.API
             services.AddDbContext<CryptoContext>(o => o.UseSqlServer(connectionString));
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IReportJobRepository, ReportJobRepository>();
+            services.AddScoped<IReportJobFileRepository, ReportJobFileRepository>();
             services.AddIdentity<CryptoUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = false;

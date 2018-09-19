@@ -33,7 +33,7 @@ namespace GCAT.API.Services
 
         public async Task<IEnumerable<ReportJob>> GetReportJobsAsync(string userId)
         {
-            return await _context.ReportJobs.Where(x => x.UserId == userId).ToListAsync();
+            return await _context.ReportJobs.Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedDate).ToListAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

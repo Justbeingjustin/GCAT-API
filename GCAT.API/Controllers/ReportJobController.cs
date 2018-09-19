@@ -22,9 +22,9 @@ namespace GCAT.API.Controllers
         private UserManager<CryptoUser> _userManager;
         private readonly IMapper _mapper;
 
-        public ReportJobsController(IReportJobRepository organizationRepository, UserManager<CryptoUser> userManager, IMapper mapper)
+        public ReportJobsController(IReportJobRepository reportJobRepository, UserManager<CryptoUser> userManager, IMapper mapper)
         {
-            _reportJobRepository = organizationRepository;
+            _reportJobRepository = reportJobRepository;
             _userManager = userManager;
             _mapper = mapper;
         }
